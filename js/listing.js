@@ -47,6 +47,19 @@ function propertylisting(listing) {
 
 function listing(list, n = 0) {
     // const faker = require('faker');
+
+    if(n > 20-3 ){
+        console.log('reset');
+        n = 0
+    }else{
+        console.log('next');
+        n = n
+    }
+     
+
+    //console.log(list);
+
+
     var streetNumber = ['2549', '7459', '3478', '1975', '9515', '7865']
 
     var streetName = ['Lawrence St', 'Main Rd', 'Jefferson Ave', 'Northside St NE', 'Lake Rd', 'Washington Ave',]
@@ -68,17 +81,42 @@ function listing(list, n = 0) {
     var address = createAdress();
     let row = document.querySelector('.listing')
     row.innerHTML=" "
-
+    let backcol = document.createElement('div')
+    backcol.classList.add('col-1')
+    
+    let listcol = document.createElement('div')
+    listcol.classList.add('col-10')
+    let listcon = document.createElement('div')
+    listcon.className = 'conatiner'
+    let listrow = document.createElement('div')
+    listrow.className = 'row'
+    let back = document.createElement('button')
+    back.addEventListener('click', ()=>{
+        console.log('current n is'+n);
+        n = n-6
+        if(n<0){
+            n = 15
+        }
+        console.log('back n is '+n);
+        listing(list,n)})
+    back.textContent='Back'
+    backcol.appendChild(back)
+    row.appendChild(backcol)
     for (let i = 0; i < 3; i++) {
        console.log(n)
        n += 1
        let col = document.createElement('div')
-       col.classList.add('col-md-3')
-       let card = '<div class="card bg-dark text-white"> <img src='+ list[n]['Media'][0]['MediaURL']+' class="card-img" alt="..."> <div class="card-img-overlay"> <h5 class="card-title">Card title</h5> <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> <p class="card-text">Last updated 3 mins ago</p> </div> </div>'
+       col.classList.add('col-md-4')
+       let card = '<div class="card bg-dark text-white"> <img src='+ list[n]['Media'][0]['MediaURL']+' class="card-img" alt="..."> <div class="card-img-overlay"> <h5 class="card-title"> house '+ n +'</h5> <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> <p class="card-text">Last updated 3 mins ago</p> </div> </div>'
        col.innerHTML= card
-        
-       
-       row.appendChild(col)
-       
+       listrow.appendChild(col) 
     }
+    listcon.appendChild(listrow)
+    listcol.appendChild(listcon)
+    row.appendChild(listcol)
+    let next = document.createElement('button')
+    next.addEventListener('click', ()=>{listing(list,n)})
+    next.textContent = 'next'
+    row.appendChild(next)
+    
 }

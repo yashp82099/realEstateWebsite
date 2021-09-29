@@ -79,8 +79,10 @@ function listing(list, n = 0) {
     }
 
     var address = createAdress();
-    let row = document.querySelector('.listing')
-    row.innerHTML=" "
+    let container = document.querySelector('.listing')
+    container.innerHTML=" "
+    let row = document.createElement('div')
+    row.className='row'
     let backcol = document.createElement('div')
     backcol.classList.add('col-1')
     
@@ -114,9 +116,48 @@ function listing(list, n = 0) {
     listcon.appendChild(listrow)
     listcol.appendChild(listcon)
     row.appendChild(listcol)
+    let nextcol = document.createElement('div')
+    nextcol.className ='col-1'
     let next = document.createElement('button')
     next.addEventListener('click', ()=>{listing(list,n)})
     next.textContent = 'next'
-    row.appendChild(next)
-    
+    nextcol.appendChild(next)
+    row.appendChild(nextcol)
+    container.appendChild(row)
+    let more = document.createElement('button')
+    more.textContent = 'all'
+    more.addEventListener('click',()=>{
+        wholelisting(list)
+    })
+    container.appendChild(more)
+    // wholelisting(list)
+}
+
+
+function wholelisting(list){
+    let oldlist = document.querySelector('.listing')
+    oldlist.innerHTML=''
+
+    let row = document.createElement('div')
+    row.classList.add('row')
+    for (let i = 0; i < list.length; i++) {
+        console.log(i)
+        // n += 1
+        let col = document.createElement('div')
+        col.classList.add('col-md-4')
+        let card = '<div class="card bg-dark text-white"> <img src='+ list[i]['Media'][0]['MediaURL']+' class="card-img" alt="..."> <div class="card-img-overlay"> <h5 class="card-title"> house '+ i +'</h5> <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> <p class="card-text">Last updated 3 mins ago</p> </div> </div>'
+        col.innerHTML= card
+        row.appendChild(col) 
+     }
+    let container = document.querySelector('.mainlist')
+     container.appendChild(row)
+      let less = document.createElement('button')
+      less.textContent = 'Less'
+      less.addEventListener('click', () =>{
+          container.innerHTML = ''
+          listing(list)
+      })
+      container.appendChild(less)
+
+
 }

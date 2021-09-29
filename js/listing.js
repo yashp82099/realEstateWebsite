@@ -1,8 +1,9 @@
 
 
+
 window.addEventListener('DOMContentLoaded', () => {
     let pot = document.getElementsByClassName('port-area')
-    fetch('https://api.bridgedataoutput.com/api/v2/test/listings?access_token=6baca547742c6f96a6ff71b138424f21&limit=50')
+    fetch('https://api.bridgedataoutput.com/api/v2/test/listings?access_token=6baca547742c6f96a6ff71b138424f21&limit=20')
         .then(response => response.json())
         .then(data => listing(data['bundle']))
 
@@ -44,7 +45,7 @@ function propertylisting(listing) {
     }
 }
 
-function listing(list) {
+function listing(list, n = 0) {
     // const faker = require('faker');
     var streetNumber = ['2549', '7459', '3478', '1975', '9515', '7865']
 
@@ -65,33 +66,19 @@ function listing(list) {
     }
 
     var address = createAdress();
-    console.log(address);
-    console.log(list);
-    for (let i = 0; i < list.length; i++) {
-        console.log(list[i]);
-        let row = document.querySelector('.listing-2')
-        console.log(row);
-        let col = document.createElement('div')
+    let row = document.querySelector('.listing')
+    row.innerHTML=" "
 
-        let card = document.createElement('div')
-        card.classList.add('card', 'h-100')
-
-        let img = document.createElement('img')
-        img.src = list[i]['Media'][Math.floor(Math.random() * 5)]['MediaURL']
-        img.className = 'card-img-top'
-
-
-        let title = document.createElement('h3')
-        title.className ='card-title'
-        title.textContent = createAdress()
-
-        // title.textContent
-        console.log(list[0]);
-        card.appendChild(img)
-        card.appendChild(title)
-
-        col.classList.add('col-4', 'p-2')
-        col.appendChild(card)
-        row.appendChild(col)
+    for (let i = 0; i < 3; i++) {
+       console.log(n)
+       n += 1
+       let col = document.createElement('div')
+       col.classList.add('col-md-3')
+       let card = '<div class="card bg-dark text-white"> <img src='+ list[n]['Media'][0]['MediaURL']+' class="card-img" alt="..."> <div class="card-img-overlay"> <h5 class="card-title">Card title</h5> <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> <p class="card-text">Last updated 3 mins ago</p> </div> </div>'
+       col.innerHTML= card
+        
+       
+       row.appendChild(col)
+       
     }
 }

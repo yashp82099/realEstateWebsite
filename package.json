@@ -6,7 +6,6 @@
   "scripts": {
     "lite": "lite-server",
     "start": "npm run lite",
-
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -15,8 +14,14 @@
     "lite-server": "^2.6.1"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "bootstrap": "^4.5.2",
+    "faker": "^5.5.3",
+    "font-awesome": "^4.7.0",
+    "i": "^0.3.7",
     "jquery": "^3.5.1",
-    "popper.js": "^1.16.1"
+    "npm": "^7.24.1",
+    "popper.js": "^1.16.1",
+    "real-random-address": "^1.1.0"
   }
 }

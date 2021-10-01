@@ -20,7 +20,10 @@ async function listingHouses(listing){
         img.classList.add('slideimg')
         div.appendChild(img)
         await delay(3)
-        div.innerHTML = ""
+        if(i < listing.length - 1){
+          div.innerHTML = ""  
+        }
+        
     }
      
 }

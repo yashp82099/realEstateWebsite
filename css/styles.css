@@ -39,6 +39,31 @@
     width: 100%;
   }
 
+  .nav-top{
+    font-weight: bolder;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding-left: 2vh;
+    padding-right: 2vh;
+    font-size: 2vh;
+    margin-left: 2vh;
+    margin-right: 2vh;
+    font-size: 2vh;
+    text-shadow: 0px 0px 5px rgb(0, 0, 0)
+  }
+  .nav-top:hover{
+    font-weight: bolder;
+    text-decoration: none;
+    color: rgb(107, 150, 242);
+    background-color: rgb(8, 115, 255,0.2);
+    margin-left: 2vh;
+    margin-right: 2vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    font-size: 2vh;
+    text-shadow: 0px 0px 30px rgb(255, 255, 255)
+  }
+
   .title-style{
     color: white;
     text-shadow: 0px 0px 20px black;
